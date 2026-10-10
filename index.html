@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZWNB3WHS6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HZWNB3WHS6');
+</script>
+<title>Beeline — a honeybee adventure in 10 cities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css">
+<script src="https://js.arcgis.com/4.30/"></script>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="viewDiv"></div>
+<div id="touch" class="off" aria-hidden="true"></div>
+
+<div id="hud">
+  <div>
+    <div class="city" id="hCity">Beeline</div>
+    <div class="area" id="hArea">Loading 3D scene</div>
+  </div>
+  <div class="spacer"></div>
+  <div class="stat"><small>Round</small><span id="hRound">1/10</span></div>
+  <div class="stat"><small>Score</small><span id="hScore">0</span></div>
+  <div class="stat"><small>Flowers</small><span id="hDots">0</span></div>
+  <div class="stat"><small>Lives</small><div id="lives"></div></div>
+</div>
+
+<div id="tools">
+  <button class="tool" id="bPause">Pause</button>
+  <button class="tool" id="bXray" aria-pressed="true">See-through buildings</button>
+  <button class="tool" id="bLook" aria-pressed="false">Look around</button>
+  <button class="tool" id="bSound" aria-pressed="true">Sound on</button>
+</div>
+<div id="viewToggle" role="group" aria-label="Camera view">
+  <button data-v="bird" aria-pressed="true">Bird's-eye</button>
+  <button data-v="fp" aria-pressed="false">First person</button>
+  <span class="sep" aria-hidden="true"></span>
+  <button class="zb" id="zOut" aria-label="Zoom out" title="Zoom out (−)">−</button>
+  <button class="zb" id="zIn" aria-label="Zoom in" title="Zoom in (+)">+</button>
+</div>
+<canvas id="mini" width="400" height="400" aria-label="Minimap"></canvas>
+
+<div class="pad" id="pad" aria-label="Direction pad">
+  <button class="u" data-d="up" aria-label="Up">▲</button>
+  <button class="l" data-d="left" aria-label="Left">◀</button>
+  <button class="r" data-d="right" aria-label="Right">▶</button>
+  <button class="d" data-d="down" aria-label="Down">▼</button>
+</div>
+
+<div id="banner"><div class="sign" id="sign">
+  <div class="kicker">A honeybee adventure across 10 real cities</div>
+  <h1>Beeline</h1>
+  <div class="sub">Fly your honeybee through real city blocks, from a tiny 2 × 3 grid up to 5 × 6, and gather pollen from every flower. Watch out for the wasps buzzing around the streets!</div>
+  <div class="note">Find a super flower in each corner. It makes your bee giant for a few seconds, so you can bonk the wasps back to their nest. Arrow keys or WASD on a keyboard; swipe or use the pad on a phone. Zoom with the + and − buttons, the mouse wheel or a pinch. Visit every flower to fly to the next city.</div>
+  <div class="row">
+    <button class="btn" id="bStart" disabled>Loading map…</button>
+    <select id="startAt" aria-label="Starting city"></select>
+  </div>
+  <div class="diffrow"><span class="lbl" id="diffLbl">Difficulty</span>
+    <div class="diff" role="group" aria-labelledby="diffLbl">
+      <button data-diff="1" aria-pressed="false">Easy</button><button data-diff="2" aria-pressed="true">Normal</button><button data-diff="3" aria-pressed="false">Hard</button>
+    </div>
+    <span class="lbl" id="diffNote">Standard speed, 3 lives</span>
+  </div>
+</div></div>
+<div id="toast"></div>
+
+<!-- Game code, loaded in order. Each file shares one global scope. -->
+<script src="js/config.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/grid.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/symbols.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/state.js"></script>
+<script src="js/movement.js"></script>
+<script src="js/round.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/flow.js"></script>
+<script src="js/update.js"></script>
+<script src="js/minimap.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/input.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
